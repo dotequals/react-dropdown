@@ -1,0 +1,58 @@
+{
+  "name": "@dotequals/react-dropdown",
+  "version": "0.9.0",
+  "description": "Drop-in replacement for fraserxu/react-dropdown using react hooks",
+  "author": "dotequals",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "react-component",
+    "component",
+    "dropdown",
+    "select"
+  ],
+  "main": "dist/index.js",
+  "dependencies": {},
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-prismjs": "^1.1.1",
+    "css-loader": "^3.3.2",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "gh-pages": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "prismjs": "^1.17.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "style-loader": "^1.0.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "scripts": {
+    "build-gh": "webpack --mode production",
+    "deploy-gh": "gh-pages -d examples/dist",
+    "prepublishOnly": "npm run transpile-for-npm",
+    "publish-example": "npm run build-gh && npm run deploy-gh",
+    "start": "webpack-dev-server --mode development",
+    "transpile-for-npm": "babel src -d dist --copy-files"
+  }
+}
