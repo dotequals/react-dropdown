@@ -1,6 +1,10 @@
 # @dotequals/react-dropdown
  Drop-in replacement for [fraserxu/react-dropdown](https://github.com/fraserxu/react-dropdown) using [hooks](https://reactjs.org/docs/hooks-intro.html) **(requires react >=16.8.0)**. Demo available [here](https://dotequals.github.io/react-dropdown/).
 
+ <p class="center">
+ <b><a href="https://github.com/dotequals/react-dropdown/releases">Release Notes</a></b>
+ </p>
+
 ## FAQ
 **Why not just use `<select>` and `<option>`?** Mainly, [\<select\> styling with CSS](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#Styling_with_CSS), but a custom implementation does allow for a few more improvements.
 
