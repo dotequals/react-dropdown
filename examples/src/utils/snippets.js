@@ -24,4 +24,4 @@ const defaultOption = options[0];
 export {
   install,
   usage,
-}
+};

@@ -1,5 +1,5 @@
 # @dotequals/react-dropdown
- Drop-in replacement for [fraserxu/react-dropdown](https://github.com/fraserxu/react-dropdown) using [hooks](https://reactjs.org/docs/hooks-intro.html) **(requires react >=16.8.0)**.
+ Drop-in replacement for [fraserxu/react-dropdown](https://github.com/fraserxu/react-dropdown) using [hooks](https://reactjs.org/docs/hooks-intro.html) **(requires react >=16.8.0)**. Demo available [here](https://dotequals.github.io/react-dropdown/).
 
 ## FAQ
 **Why not just use `<select>` and `<option>`?** Mainly, [\<select\> styling with CSS](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select#Styling_with_CSS), but a custom implementation does allow for a few more improvements.
@@ -169,13 +169,14 @@ As an alternative to styling `Dropdown-arrow`, it can be replaced entirely if `a
 ## Distribute
 ### To NPM
 **Dry Run (optional)**
-1. `npm pack`
+1. `npm run test-pack`
 2. inspect the built `.tgz`
 
 **Package**
 1. Make sure you're logged into npm (`npm whoami`)
-1. Increment `version` in `package.json`
-2. `npm run publish` (Note: `scripts.prepublishOnly` is run automatically **before** `scripts.publish`)
+2. `npm run lint` successfully
+3. Increment `version` in `package.json`
+4. `npm run publish` (Note: `scripts.prepublishOnly` is run automatically **before** `scripts.publish`)
 
 ### To GitHub Pages
 1. Make sure origin exists (`git remote show origin`) and that you can push to it.
