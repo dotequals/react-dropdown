@@ -18,10 +18,17 @@ const DropdownMenuItem = (props) => {
   const isSelected = value === selectedValue;
 
   const navigateMenu = (e) => {
-    const { keyCode } = e;
-    // Submit on Enter
-    if (keyCode === 13) {
-      onClick(option);
+    const { keyCode, type: eType } = e;
+
+    if (eType === 'keydown') {
+      // Submit on Enter
+      if (keyCode === 13) {
+        onClick(optionObj);
+      }
+    }
+
+    if (eType === 'click') {
+      onClick(optionObj);
     }
   };
 
@@ -39,8 +46,8 @@ const DropdownMenuItem = (props) => {
       aria-selected={isSelected}
       className={menuItemClass}
       key={value}
-      onClick={onClick && !disabled ? () => onClick(option) : undefined}
-      onKeyDown={onClick && !disabled ? (e) => navigateMenu(e, option) : undefined}
+      onClick={onClick && !disabled ? navigateMenu : undefined}
+      onKeyDown={onClick && !disabled ? navigateMenu : undefined}
       role={type !== 'group' ? 'option' : 'separator'}
       tabIndex={type === 'title' || disabled ? -1 : 0}
     >

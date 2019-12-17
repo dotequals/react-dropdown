@@ -18,7 +18,7 @@ const DropdownPlaceholder = (props) => {
 
   return (
     <div className={dropdownPlaceholder}>
-      {selectedLabel || placeholder}
+      {selectedLabel !== '' ? selectedLabel : placeholder}
     </div>
   );
 };
