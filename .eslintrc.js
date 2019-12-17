@@ -8,6 +8,11 @@ module.exports = {
     rules: {
       'import/no-extraneous-dependencies': 'off',
     },
+  }, {
+    files: [ '*.test.js' ],
+    env: {
+      jest: true,
+    },
   }],
   rules: {
     'linebreak-style': 'off',
