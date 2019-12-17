@@ -9,6 +9,7 @@ const DropdownArrow = (props) => {
     arrowOpen,
     baseClassName,
     open,
+    wrapperClassName,
   } = props;
 
   const renderArrow = () => {
@@ -23,8 +24,13 @@ const DropdownArrow = (props) => {
     return <span className={arrowClass} />;
   };
 
+  const dropdownArrow = joinClasses(
+    `${baseClassName}-arrow-wrapper`,
+    wrapperClassName,
+  );
+
   return (
-    <div className={`${baseClassName}-arrow-wrapper`}>
+    <div className={dropdownArrow}>
       {renderArrow()}
     </div>
   );

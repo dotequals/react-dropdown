@@ -24,6 +24,7 @@ const DropdownRoot = (props) => {
     placeholder,
     placeholderClassName,
     value,
+    wrapperClassName,
   } = props;
   const valueObj = resolver(value);
   const [open, setOpen] = useState(false);
@@ -116,6 +117,7 @@ const DropdownRoot = (props) => {
           arrowOpen={arrowOpen}
           baseClassName={baseClassName}
           open={open}
+          wrapperClassName={wrapperClassName}
         />
       </DropdownControl>
 
