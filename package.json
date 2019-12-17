@@ -17,6 +17,7 @@
     "select"
   ],
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {},
   "files": [
     "dist"
@@ -61,7 +62,7 @@
     "publish-example": "npm run build-gh && npm run deploy-gh",
     "start": "webpack-dev-server --mode development",
     "test": "jest",
-    "test-pack": "npm run transpile-for-npm && npm run pack",
+    "test-pack": "npm run transpile-for-npm && npm pack",
     "transpile-for-npm": "babel src -d dist --copy-files"
   }
 }
