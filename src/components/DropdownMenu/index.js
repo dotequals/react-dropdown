@@ -8,7 +8,6 @@ import resolver from '../../utils/resolver';
 const DropdownMenu = (props) => {
   const {
     baseClassName,
-    focusRef,
     menuClassName,
     onClick,
     options,
@@ -25,7 +24,7 @@ const DropdownMenu = (props) => {
         const groupOptions = items.map((item) => {
           const optionObj = resolver(item);
           return (
-            <DropdownMenuItem key={optionObj.value} baseClassName={baseClassName} focusRef={optionObj.value === 'five' ? focusRef : undefined} onClick={onClick} option={item} selectedValue={selectedValue} type="option" />
+            <DropdownMenuItem key={optionObj.value} baseClassName={baseClassName} onClick={onClick} option={item} selectedValue={selectedValue} type="option" />
           );
         });
 

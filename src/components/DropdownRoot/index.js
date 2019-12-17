@@ -19,6 +19,7 @@ const DropdownRoot = (props) => {
     disabled,
     menuClassName,
     onChange,
+    onFocus,
     options,
     placeholder,
     placeholderClassName,
@@ -31,7 +32,6 @@ const DropdownRoot = (props) => {
 
   // Handle clicks when <Dropdown> is open and the user clicks somewhere outside the component.
   const root = useRef();
-  const focusRef = useRef();
   const handleDropdownClose = (e) => {
     if (!root.current.contains(e.target)) {
       setOpen(false);
@@ -49,7 +49,7 @@ const DropdownRoot = (props) => {
     };
   }, [open]);
 
-  // Handle <Dropdown> being passed a different prop
+  // Handle <Dropdown> being passed a different value
   useEffect(() => {
     const possibleObj = resolver(value);
     if (selectedValue !== possibleObj.value) {
@@ -59,7 +59,9 @@ const DropdownRoot = (props) => {
   }, [value]);
 
   const handleChange = (optionObject) => {
-    onChange(optionObject);
+    if (onChange && typeof onChange === 'function') {
+      onChange(optionObject);
+    }
     setSelectedValue(optionObject.value);
     setSelectedLabel(optionObject.label);
     setOpen(false);
@@ -71,23 +73,25 @@ const DropdownRoot = (props) => {
     open ? 'is-open' : '',
   );
 
-  const toggleDropdown = (e) => {
+  const toggleDropdown = () => {
+    if (onFocus && typeof onFocus === 'function') {
+      onFocus(!open);
+    }
+    setOpen(!open);
+  };
+
+  const dropdownControlClick = (e) => {
     const { type, keyCode } = e;
+    // Toggle on click
     if (type === 'click') {
-      setOpen(!open);
-      if (open) {
-        if (focusRef.current) {
-          focusRef.current.focus();
-        }
-      }
+      toggleDropdown();
     }
 
-    // Toggle on Enter and Space if !open
-    if (type === 'keydown' && !open && (keyCode === 32 || keyCode === 13)) {
+    // Open only on Enter and Space
+    if (type === 'keydown' && (keyCode === 32 || keyCode === 13)) {
       e.preventDefault();
-      setOpen(true);
-      if (focusRef.current) {
-        focusRef.current.focus();
+      if (!open) {
+        toggleDropdown();
       }
     }
   };
@@ -98,7 +102,7 @@ const DropdownRoot = (props) => {
         baseClassName={baseClassName}
         controlClassName={controlClassName}
         dropdownDisabled={disabled}
-        onClick={toggleDropdown}
+        onClick={dropdownControlClick}
       >
         <DropdownPlaceholder
           baseClassName={baseClassName}
@@ -118,7 +122,6 @@ const DropdownRoot = (props) => {
       { open ? (
         <DropdownMenu
           baseClassName={baseClassName}
-          focusRef={focusRef}
           menuClassName={menuClassName}
           onClick={handleChange}
           options={options}
@@ -136,7 +139,6 @@ DropdownRoot.defaultProps = {
   controlClassName: '',
   disabled: false,
   menuClassName: '',
-  onChange: (() => true),
   placeholder: 'Select...',
   placeholderClassName: '',
   value: '',

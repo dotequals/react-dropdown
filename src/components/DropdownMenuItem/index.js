@@ -6,7 +6,6 @@ import resolver from '../../utils/resolver';
 const DropdownMenuItem = (props) => {
   const {
     baseClassName,
-    focusRef,
     onClick,
     option,
     selectedValue,
@@ -39,7 +38,6 @@ const DropdownMenuItem = (props) => {
       aria-readonly={type === 'title'}
       aria-selected={isSelected}
       className={menuItemClass}
-      ref={focusRef}
       key={value}
       onClick={onClick && !disabled ? () => onClick(option) : undefined}
       onKeyDown={onClick && !disabled ? (e) => navigateMenu(e, option) : undefined}
