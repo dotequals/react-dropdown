@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { it } from 'jest';
 
 import Dropdown from './index';
 
